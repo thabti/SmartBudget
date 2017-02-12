@@ -1,15 +1,11 @@
 /* eslint-disable */
 const path = require('path'),
-  autoprefixer = require('autoprefixer'),
-  env = require('./webpack.env');
+  webpack = require('webpack'),
+  env = require('./webpack.env'),
+  autoprefixer = require('autoprefixer');
 
 module.exports = function (dirname) {
-  const styleLoader = ['style-loader'].concat(env.isProd ? [] : ['?sourceMap']).join(''),
-    cssLoaderParameters = env.isProd
-      ? '&localIdentName=[hash:base64:32]'
-      : '&sourceMap&localIdentName=[name]--[local]',
-    cssLoader = ['css-loader?minimaze&camelCase&modules&importLoaders=1', cssLoaderParameters].join(''),
-    sassLoader = ['sass-loader'].concat(env.isProd ? '' : '?sourceMap').join(''),
+  const sassLoader = ['sass-loader'].concat(env.isProd ? '' : '?sourceMap').join(''),
     postcssLoader = ['postcss-loader'].concat(env.isProd ? '' : '?sourceMap').join(''),
     resolveUrlLoader = ['resolve-url-loader'].concat(env.isProd ? '' : '?sourceMap').join(''),
     urlLoader = 'url-loader?limit=10000',
@@ -24,6 +20,13 @@ module.exports = function (dirname) {
       data: '$fa-font-path: "font-awesome/fonts";'
     };
   return {
+    plugins: [
+      new webpack.LoaderOptionsPlugin({
+        options: {
+          postcss: [/*autoprefixer({ browsers: ['last 2 versions'] })*/],
+        },
+      })
+    ],
     module: {
       rules: [
         // take all less || sass files, compile them, and bundle them in with our js bundle
@@ -32,9 +35,7 @@ module.exports = function (dirname) {
           test: /\.(s?)css$/,
           exclude: /node_modules/,
           use:[
-            { loader: styleLoader },
-            { loader: cssLoader },
-            { loader: resolveUrlLoader },
+            { loader: 'react-native-css-loader' },
             { loader: sassLoader, options: sassOptions },
             { loader: postcssLoader }
           ]
@@ -43,9 +44,7 @@ module.exports = function (dirname) {
           test: /\.(s?)css$/,
           include: /node_modules/,
           use:[
-            { loader: styleLoader },
-            { loader: cssLoader },
-            { loader: resolveUrlLoader },
+            { loader: 'react-native-css-loader' },
             { loader: sassLoader, options: sassOptions }
           ]
         },
@@ -66,9 +65,6 @@ module.exports = function (dirname) {
           loader: 'json-loader'
         }
       ]
-    },
-    postcss: function () {
-      return [autoprefixer];
     }
   };
 };

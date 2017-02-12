@@ -5,7 +5,18 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const dirname = path.resolve(__dirname, '../../../');
 const webpackResources = require('./webpack.resources')(dirname);
 
+const WEBPACK_DEV_PORT = 4000;
+
 module.exports = {
+  devServer: {
+    contentBase: path.join(dirname, '/public/'),
+    compress: true,
+    hot: true, // this enables hot reload
+    inline: true, // use inline method for hmr 
+    clientLogLevel: 'error',
+    port: WEBPACK_DEV_PORT
+  },
+  watch: true,
   context: dirname,
   devtool: 'source-map',
   entry: [
@@ -15,7 +26,7 @@ module.exports = {
   output: {
     path: path.join(dirname, '/public/'),
     filename: 'bundle.js',
-    publicPath: '/',
+    publicPath: ['http://localhost:', WEBPACK_DEV_PORT, '/'].join(''),
   },
   resolve: {
     alias: {
@@ -35,7 +46,7 @@ module.exports = {
             transforms: [
               {
                 transform: 'react-transform-hmr',
-                imports   : ['react'],
+                imports: ['react'],
                 locals: ['module']
               }
             ],
@@ -44,7 +55,9 @@ module.exports = {
       }
     ])
   },
-  plugins: [
+  plugins: webpackResources.plugins.concat([
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
       inject: 'body'
     }),
@@ -58,8 +71,6 @@ module.exports = {
       name: 'commons',
       filename: 'commons.js',
       minChunks: 2,
-    }),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
-  ],
+    })
+  ]),
 };

@@ -9,6 +9,7 @@ Those components are replacing the original ReactNative components when the app 
 ## Pre requirements
 * ReactNative: https://facebook.github.io/react-native/docs/getting-started.html
 * ReactNative for web: https://www.npmjs.com/package/react-native-web
+* CSS loader for ReactNative: https://www.npmjs.com/package/react-native-css-loader
 * Enzyme + ReactNative: https://github.com/airbnb/enzyme/blob/master/docs/guides/react-native.md
 
 ### Tips for getting it up and running
