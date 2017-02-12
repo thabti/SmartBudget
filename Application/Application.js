@@ -1,25 +1,26 @@
-import React, {
-  Component
-} from 'react';
+import React from 'react';
 import {
+  StyleSheet,
   Text,
   View
 } from 'react-native';
 
-import Styles from './Application.scss';
+// import Styles from './Application.scss';
+// scss not working for native (android and ios), I will try to fix it soon.
 
-function onClick() {
-  alert('TEST');
-}
-
-class Application extends Component {
-  render() {
-    return (
-      <View style={Styles.container}>
-        <Text onClick={onClick}>Hello world!</Text>
-      </View>
-    );
+const Styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#F5FCFF",
   }
-};
+});
+
+const Application = (() => (
+  <View style={Styles.container}>
+    <Text>Hello world!</Text>
+  </View>
+));
 
 export default Application;

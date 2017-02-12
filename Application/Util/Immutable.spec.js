@@ -1,4 +1,4 @@
-import Immutable from './immutable';
+import Immutable from './Immutable';
 
 describe('Immutable', () => {
     let value, exception;
@@ -100,7 +100,7 @@ describe('Immutable', () => {
 
     describe('Immutable array cannot set value', () => {
         it('Given an immutable array has been created', createImmutable([1, 2, 3]));
-        it('When push a new value to it', setValueAt(4, 1));
+        it('When set a value to it', setValueAt(4, 1));
         it('Then the array item 2 should not be changed', checkValueAt(2, 1));
         it('And exception should be defined', isExceptionDefined);
     });

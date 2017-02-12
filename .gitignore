@@ -1,5 +1,5 @@
 # Examples
-Application/_example/**
+_example/**
 
 # Coverage directory used by tools like istanbul
 coverage
@@ -46,6 +46,8 @@ android/app/src/main/assets/**
 # node.js
 #
 node_modules/
+coverage/**
+.nyc_output
 
 # Logs
 logs

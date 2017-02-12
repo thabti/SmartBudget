@@ -1,4 +1,4 @@
-function createReducers(initialState = {}, reducersMapping = {}) {
+function createReducers(initialState, reducersMapping) {
     return (
         (state = initialState, action = {}) => {
             const reducer = reducersMapping[action.type] || (() => {});

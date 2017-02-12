@@ -1,8 +1,8 @@
 import axios from 'axios';
-import Immutable from './immutable';
+import Immutable from './Immutable';
 
 const FactoryApi = Immutable({
-    createApiRef: ({ headers } = {}) =>
+    createApiRef: (headers) =>
         Boolean(headers) 
         ? axios.create({
             headers: {

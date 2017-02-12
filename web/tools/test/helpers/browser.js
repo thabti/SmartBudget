@@ -1,11 +1,20 @@
 require('source-map-support').install({
-  handleUncaughtExceptions: false,
-  target: 'node'
+  handleUncaughtExceptions: false
 });
 require('babel-register')({
   babelrc: false,
-  presets: ['es2015', 'stage-0', 'react'],
-  plugins: ['transform-runtime', 'transform-es2015-modules-umd']
+  presets: ['es2015', 'react', 'stage-0'],
+  plugins: ['transform-runtime', 'transform-es2015-modules-umd', ['module-resolver', {
+    'root': ['./'],
+    'alias': {
+      'react-native': 'react-native-web'
+    }
+  }]],
+  'env': {
+    'test': {
+      'plugins': ['istanbul']
+    }
+  }
 });
 
 const jsdom = require('jsdom').jsdom;
