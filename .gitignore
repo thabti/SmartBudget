@@ -32,7 +32,8 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
-project.xcworkspace
+SmartBudget.xcworkspace/**
+ios/*.jsbundle*
 
 # Android/IntelliJ
 #
