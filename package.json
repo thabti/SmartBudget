@@ -48,8 +48,10 @@
     "start": "react-native start",
     "ios:bundle": "react-native bundle --dev false --entry-file index.ios.js --platform ios --bundle-output ios/main.jsbundle",
     "ios:bundle:dev": "react-native bundle --entry-file index.ios.js --platform ios --bundle-output ios/main.jsbundle",
+    "ios:run:dev": "npm run ios:bundle:dev && react-native run-ios",
     "android:bundle": "react-native bundle --dev false --entry-file index.android.js --platform android --bundle-output android/app/src/main/assets/index.android.bundle",
     "android:bundle:dev": "react-native bundle --entry-file index.android.js --platform android --bundle-output android/app/src/main/assets/index.android.bundle",
+    "android:run:dev": "npm run android:bundle:dev && react-native run-android",
     "web:bundle": "webpack --config web/tools/webpack/webpack.config.prod.js --progress --colors",
     "web:dev": "webpack-dev-server --config web/tools/webpack/webpack.config.dev.js --inline --colors",
     "clear-cache": "gulp clear-cache"
