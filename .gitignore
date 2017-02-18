@@ -1,66 +1,68 @@
 # Examples
-_example/**
+*/_example/**
 
 # Coverage directory used by tools like istanbul
-coverage
+*/coverage/**
 
 # nyc test coverage
-.nyc_output
+*/.nyc_output
 
 # Optional npm cache directory
-.npm
+*/.npm
 
 # OSX
 #
 .DS_Store
+*/.DS_Store
 
 # Xcode
 #
-build/
-*.pbxuser
-!default.pbxuser
-*.mode1v3
-!default.mode1v3
-*.mode2v3
-!default.mode2v3
-*.perspectivev3
-!default.perspectivev3
-xcuserdata
-*.xccheckout
-*.moved-aside
-DerivedData
-*.hmap
-*.ipa
-*.xcuserstate
-SmartBudget.xcworkspace/**
-ios/*.jsbundle*
+**/build/
+*/*.pbxuser
+*/!default.pbxuser
+*/*.mode1v3
+*/!default.mode1v3
+*/*.mode2v3
+*/!default.mode2v3
+*/*.perspectivev3
+*/!default.perspectivev3
+*/xcuserdata
+*/*.xccheckout
+*/*.moved-aside
+*/DerivedData
+*/*.hmap
+*/*.ipa
+*/*.xcuserstate
+*/SmartBudget.xcworkspace/**
+*/ios/*.jsbundle*
 
 # Android/IntelliJ
 #
-build/
+*/build/
 .idea
-.gradle
-local.properties
-*.iml
-android/app/src/main/assets/**
+*/.idea
+**/.gradle
+*/local.properties
+*/*.iml
+*/android/app/src/main/assets/**
 
 # node.js
 #
-node_modules/
-coverage/**
-.nyc_output
+*/node_modules/
+*/coverage/**
+*/.nyc_output
 
 # Logs
-logs
-*.log
-npm-debug.log*
-yarn-error.log
+*/logs
+*/*.log
+*/npm-debug.log*
+*/yarn-error.log
 
 # BUCK
-buck-out/
-\.buckd/
-android/app/libs
-*.keystore
+*/buck-out/
+*/\.buckd/
+*/android/app/libs
+*/*.keystore
 
 # fastlane
 #
@@ -69,6 +71,6 @@ android/app/libs
 # For more information about the recommended setup visit:
 # https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Gitignore.md
 
-fastlane/report.xml
-fastlane/Preview.html
-fastlane/screenshots
+*/fastlane/report.xml
+*/fastlane/Preview.html
+*/fastlane/screenshots
