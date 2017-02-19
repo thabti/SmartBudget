@@ -1,0 +1,94 @@
+{
+  "name": "smart-budget-api",
+  "version": "0.0.1",
+  "description": "RESTFul API for smart budget management",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/daniloster/SmartBudget/tree/master/SmartBudgetApi"
+  },
+  "keywords": [
+    "restful",
+    "rest",
+    "api",
+    "service"
+  ],
+  "nyc": {
+    "lines": 99,
+    "statements": 99,
+    "functions": 99,
+    "branches": 99,
+    "include": [
+      "**/src/**/*.js",
+      "**/src/*.js"
+    ],
+    "exclude": [
+      "**/*.scss",
+      "**/*.png",
+      "**/*.ico",
+      "**/*.spec.js"
+    ],
+    "reporter": [
+      "text",
+      "html"
+    ],
+    "extension": [
+      ".js"
+    ],
+    "cache": false,
+    "sourceMap": false,
+    "instrument": false,
+    "report-dir": "./coverage"
+  },
+  "license": "ISC",
+  "scripts": {
+    "test": "cross-env NODE_ENV=test mocha src/ --recursive --glob *.spec.js --require ./tools/test/helpers/node.js --colors",
+    "test:watch": "npm run test -- --watch",
+    "precompile": "rm -rf lib/ && mkdir lib/",
+    "compile": "babel src --out-dir lib --copy-files --source-maps --require source-map-support/register",
+    "compile:watch": "npm run compile -- --watch",
+    "build": "NODE_ENV=production npm run compile",
+    "dev": "nodemon -w lib/  lib/index.js",
+    "start": "concurrently \"npm run dev\" \"npm run compile:watch\"",
+    "db:import:users": "mongoimport --port=27200 --host=localhost --db=smart-budget-data-storage-api --collection=users --type=json --file=src/Database/Helpers/users.json --jsonArray --drop",
+    "db:import": "npm run db:import:users",
+    "db:start": "mongod --port 27200 --dbpath ../data-storage/db --logpath ../data-storage/mongod.log",
+    "certificate:pass.key": "openssl genrsa -des3 -passout pass:x -out local.smartbudget.pass.key 2048",
+    "certificate:key": "openssl rsa -passin pass:x -in local.smartbudget.pass.key -out local.smartbudget.key",
+    "certificate:remove:pass.key": "rm local.smartbudget.pass.key",
+    "certificate:create:csr": "openssl req -new -key local.smartbudget.key -out local.smartbudget.csr",
+    "certificate:create:crt": "openssl x509 -req -sha256 -days 365 -in local.smartbudget.csr -signkey local.smartbudget.key -out local.smartbudget.crt",
+    "certificate:setup": "npm run certificate:pass.key && npm run certificate:key && npm run certificate:remove:pass.key && npm run certificate:create:csr && npm run certificate:create:crt"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.0",
+    "body-parser": "^1.16.1",
+    "compression": "^1.6.2",
+    "dotenv": "^4.0.0",
+    "express": "4.14.1",
+    "express-jwt": "5.1.0",
+    "jwt-simple": "^0.5.1",
+    "mongoosastic": "^4.2.4",
+    "mongoose": "^4.8.3",
+    "mongoose-acl": "0.2.3",
+    "morgan": "^1.8.1"
+  },
+  "devDependencies": {
+    "babel-cli": "6.22.2",
+    "babel-core": "^6.22.1",
+    "babel-plugin-istanbul": "4.0.0",
+    "babel-plugin-transform-es2015-modules-umd": "6.18.0",
+    "babel-plugin-transform-runtime": "6.15.0",
+    "babel-preset-es2015": "6.22.0",
+    "babel-preset-stage-0": "6.22.0",
+    "babel-register": "6.18.0",
+    "chai": "3.5.0",
+    "concurrently": "^3.3.0",
+    "cross-env": "3.1.4",
+    "istanbul": "0.4.5",
+    "mocha": "3.2.0",
+    "nodemon": "1.11.0",
+    "nyc": "10.1.2",
+    "source-map-support": "0.4.8"
+  }
+}

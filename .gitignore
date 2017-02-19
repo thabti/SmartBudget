@@ -1,11 +1,10 @@
 # Examples
-*/_example/**
+**/_example/**
 
 # Coverage directory used by tools like istanbul
-*/coverage/**
-
+**/coverage/**
 # nyc test coverage
-*/.nyc_output
+**/.nyc_output
 
 # Optional npm cache directory
 */.npm
@@ -13,44 +12,42 @@
 # OSX
 #
 .DS_Store
-*/.DS_Store
+**/.DS_Store
 
 # Xcode
 #
 **/build/
-*/*.pbxuser
-*/!default.pbxuser
-*/*.mode1v3
-*/!default.mode1v3
-*/*.mode2v3
-*/!default.mode2v3
-*/*.perspectivev3
-*/!default.perspectivev3
-*/xcuserdata
-*/*.xccheckout
-*/*.moved-aside
-*/DerivedData
-*/*.hmap
-*/*.ipa
-*/*.xcuserstate
-*/SmartBudget.xcworkspace/**
-*/ios/*.jsbundle*
+**/*.pbxuser
+**/!default.pbxuser
+**/*.mode1v3
+**/!default.mode1v3
+**/*.mode2v3
+**/!default.mode2v3
+**/*.perspectivev3
+**/!default.perspectivev3
+**/xcuserdata
+**/*.xccheckout
+**/*.moved-aside
+**/DerivedData
+**/*.hmap
+**/*.ipa
+**/*.xcuserstate
+**/SmartBudget.xcworkspace/**
+**/ios/*.jsbundle*
 
 # Android/IntelliJ
 #
-*/build/
+**/build/
 .idea
-*/.idea
+**/.idea
 **/.gradle
-*/local.properties
-*/*.iml
-*/android/app/src/main/assets/**
+**/local.properties
+**/*.iml
+**/android/app/src/main/assets/**
 
 # node.js
 #
-*/node_modules/
-*/coverage/**
-*/.nyc_output
+**/node_modules/
 
 # Logs
 */logs
@@ -64,13 +61,6 @@
 */android/app/libs
 */*.keystore
 
-# fastlane
-#
-# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
-# screenshots whenever they are needed.
-# For more information about the recommended setup visit:
-# https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Gitignore.md
-
-*/fastlane/report.xml
-*/fastlane/Preview.html
-*/fastlane/screenshots
+# Projects
+SmartBudgetApi/lib/**
+**/data-storage
