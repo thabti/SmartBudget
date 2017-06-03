@@ -1,0 +1,27 @@
+{
+  "name": "babel-plugin-react-native-sass",
+  "version": "0.0.1",
+  "main": "getStyleObjectFromSass.js",
+  "description": "Babel sass parser plugin for react native",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tleunen/babel-plugin-module-resolver.git"
+  },
+  "license": "MIT",
+  "keywords": [
+    "babel",
+    "babel-plugin",
+    "module",
+    "resolver",
+    "alias",
+    "rewrite",
+    "resolve",
+    "rename",
+    "mapping",
+    "require",
+    "import"
+  ],
+  "dependencies": {
+    "react-native-css": "2.0.5"
+  }
+}

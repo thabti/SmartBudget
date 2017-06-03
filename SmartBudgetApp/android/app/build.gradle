@@ -66,6 +66,10 @@ import com.android.build.OutputFile
  */
 
 apply from: "../../node_modules/react-native/react.gradle"
+// project.ext.react = [
+//   // the name of the generated asset file containing your JS bundle
+//   bundleAssetName: "index.android.bundle",
+// ]
 
 /**
  * Set this to true to create two separate APKs instead of one:

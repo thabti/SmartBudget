@@ -8,7 +8,7 @@ const webpackResources = require('./webpack.resources')(dirname);
 module.exports = {
   context: dirname,
   entry: [
-    path.join(dirname, 'index.web'),
+    path.join(dirname, './Application/index.js'),
   ],
   output: {
     path: path.join(__dirname, '/public/'),
@@ -17,8 +17,9 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'react-native': 'react-native-web'
-    }
+      'react-native': './tools/ReactNativeWeb'
+    },
+    extensions: [".js", ".json", ".scss"]
   },
   module: {
     loaders: webpackResources.module.loaders.concat([
@@ -28,16 +29,16 @@ module.exports = {
         loader: 'babel-loader',
         query: {
           babelrc: false,
-          presets: ['react', 'es2015', 'stage-0'],
-          plugins: [['react-transform', {
-            transforms: [
-              {
-                transform: 'react-transform-hmr',
-                imports   : ['react'],
-                locals: ['module']
-              }
-            ],
-          }], 'transform-runtime', 'transform-es2015-modules-umd'],
+          presets: [["es2015", { "modules": false }], 'react', 'stage-0'],
+          plugins: [
+            ['react-transform', {
+              transforms: [
+                {
+                  imports: ['react']
+                }
+              ],
+            }], 'transform-runtime', 'transform-es2015-modules-umd'
+          ],
         },
       }
     ])
@@ -50,6 +51,8 @@ module.exports = {
         PLATFORM_ENV: JSON.stringify('web'),
       },
     }),
+    new webpack.NamedModulesPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     // optimizations
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({

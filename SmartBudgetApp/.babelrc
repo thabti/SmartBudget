@@ -1,8 +1,14 @@
 {
-  "presets": ["react-native"],
+  "plugins": [
+    ["babel-plugin-react-native-sass-classname", {
+      "extensions": ["sass"],
+      "prefixExtension": "native"
+    }]
+  ],
+  "presets": [
+    "react-native"
+  ],
   "env": {
-    "test": {
-      "plugins": ["istanbul"]
-    }
+    "PLATFORM_ENV": "react-native"
   }
 }

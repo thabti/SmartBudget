@@ -34,17 +34,19 @@ NOTE: All complement section is important to create your Android Virtual Device 
 
 #### Running your android + web environment
 
-For WEB, you will need to run "npm run web:bundle:dev".
-For Android:
-* You will need 3 terminal sessions
-1. Run (leave the terminal there): npm start
-2. Run (leave the terminal there): android avd
- 1. You will need to start one of the emulators, if you do not have it, create one. (The complement session helps with it)
-3. Run: npm run android:bundle:dev
+For WEB, you will need to run `npm run web:bundle:dev` or `npm run web:dev`.
+For Android/iOS:
+* You will need 2 terminal sessions
+1. Run (leave the terminal there, it is a sort of watch): npm start
+2. Run: `npm run android:bundle:dev` (Remember to rename in the `package.json` the name of your android image)
+ 1. This step will launch the emulator and bundle the app to android
+3. Run: `npm run ios:bundle:dev`
+ 1. Also, this will launch the emulator and bundle the app to android
 
 NOTE:
-1. Every time when you change something, you need to click on the Emulator (making the window active) and press twice "R" on your keyboard. This will refresh the content with new changes.
-2. If you have any trouble creating the index(ios|android).bundle, create the file: android/app/src/main/assets/index.android.bundle
+1. All the emulators must be installed previously;
+2. Every time when you change something, you need to click on the Emulator (making the window active) and press twice "R" on your keyboard for Android, whereas for iOS, you can use `COMMAND + R`. This will refresh the content with new changes;
+3. If you have any trouble creating the index(ios|android).bundle, create the empty file on each expected place;
 
 
 ## Contributions are welcome

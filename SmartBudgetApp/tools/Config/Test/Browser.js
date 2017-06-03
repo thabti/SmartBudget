@@ -1,13 +1,17 @@
 require('source-map-support').install({
   handleUncaughtExceptions: false
 });
+process.env.NODE_ENV = 'test';
+process.env.PLATFORM_ENV = 'web';
 require('babel-register')({
   babelrc: false,
-  presets: ['es2015', 'react', 'stage-0'],
-  plugins: ['transform-runtime', 'transform-es2015-modules-umd', ['module-resolver', {
+  presets: [["es2015", { "modules": false }], 'react', 'stage-0'],
+  plugins: [
+    "./tools/Config/CssProcessors/getStyleObjectFromSass.js",
+    'transform-runtime', 'transform-es2015-modules-umd', ['module-resolver', {
     'root': ['./'],
     'alias': {
-      'react-native': 'react-native-web'
+      'react-native': './tools/ReactNativeWeb'
     }
   }]],
   'env': {

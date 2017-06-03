@@ -1,6 +1,13 @@
 .container {
-  flex: 1;
-  justifyContent: center;
-  alignItems: center;
-  backgroundColor: #F5FCFF;
+  background-color: #ffffff;
+  color: #333333;
+
+  .content {
+    text-align: center;
+
+    .helloworld {
+      box-shadow: 10px 1px 1px #333333 10px 1px 1px #333333;
+      font-size: 25px;
+    }
+  }
 }

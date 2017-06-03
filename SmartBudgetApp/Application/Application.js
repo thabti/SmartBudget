@@ -5,21 +5,25 @@ import {
   View
 } from 'react-native';
 
-// import Styles from './Application.scss';
-// scss not working for native (android and ios), I will try to fix it soon.
-
-const Styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#F5FCFF",
-  }
-});
+import textStyles from './Application.scss';
 
 const Application = (() => (
-  <View style={Styles.container}>
-    <Text>Hello world!</Text>
+  <View className={textStyles.container}>
+    <View className={textStyles.content}>
+      <Text className={textStyles.helloworld}>Hello world!</Text>
+      <Text className={textStyles.helloworld}>Greeting!</Text>
+      <Text className={textStyles.helloworld}>Hello!</Text>
+      <Text className={textStyles.helloworld}>Hello!</Text>
+      <Text className={textStyles.helloworld}>Nothing else!</Text>
+      <Text className={textStyles.helloworld}>Nothing else!</Text>
+      <Text className={textStyles.helloworld}>Hello!</Text>
+      <Text className={textStyles.helloworld}>Nothing else!</Text>
+      <Text className={textStyles.helloworld}>Nothing else!</Text>
+      <Text className={textStyles.helloworld}>Nothing else!</Text>
+      <Text className={textStyles.helloworld}>Nothing else!</Text>
+      <Text className={textStyles.helloworld}>Nothing else!</Text>
+      <Text className={textStyles.helloworld}>Nothing else!</Text>
+    </View>
   </View>
 ));
 
